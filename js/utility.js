@@ -1,7 +1,13 @@
 'use strict';
 
-class Utility {
-    
+(function(){
+    var self = this,
+        ut = function() {},
+        prototype = Object.prototype,
+        toString  = prototype.toString;
+
+    self.ut = ut;
+
     /**
      *  formatting date
      *
@@ -13,11 +19,11 @@ class Utility {
      *  }
      *  @return string $format (formated date) 
      */
-    formatDate (date, format, _options) {
+    ut.formatDate = function(date, format, _options) {
         var options = _options || {},
             days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
-        if ( !_.isDate(date) || date == 'Invalid Date' ) return "---";
+        if (toString.call(date) !== "[object Date]" || date == 'Invalid Date') return "---";
 
         format = format || "YYYY-MM-DD";
         format = format.replace(/YYYY/g, date.getFullYear());
@@ -35,6 +41,55 @@ class Utility {
         }
 
         return format;
+    };
 
-    }
-}
+    /**
+     *  Returns a formatted numbers as money(comma as the thousands separator)
+     *  support multiple decimal patterns.
+     *
+     *  @method number
+     *  @param  int || float  $num      (number)
+     *  @param  boolean　　　  $decimal  ()
+　　　*  @return string        $num      (formatted number)     
+     */
+    ut.numberFormat = function(num, decimal){
+        var splited = [];
+
+        if (num === "" || typeof num === "undefined" || num === null) return num;
+
+        num = (typeof num !== 'string') ? num.toString(10) : num;
+        splited = num.split(".");
+
+        if (splited[0].length > 3) {
+            splited[0] = splited[0].toString().replace(/([\d]+?)(?=(?:\d{3})+$)/g, "$1,");
+        }
+
+        if (splited[1]) {
+            splited[1] = ( splited[1].length > decimal ) ? splited[1].slice(0, decimal) : splited[1];
+        } else {
+            splited[1] = ut.zeroFill(0, decimal);
+        }
+
+        return (typeof decimal !== "undefined") ? splited[0] + "." + splited[1] : splited[0];
+    };
+
+    /**
+     *  Returns pad digits with leading zeros in a string
+     *
+     *  @method zeroFill
+     *  @param  int 　　 $num   ()
+     *  @param  int 　　 $digit ()
+     *  @return string  $num　　()
+     */
+    ut.zeroFill = function(num, digit) {
+        var i;
+        num = ( typeof num !== "string" ) ? num.toString(10): num;
+
+        for (i = 0; i < digit - 1; i++) {
+            num = "0" + num;                             
+        }
+
+        return num.slice(-digit);
+    };
+
+}.call(this));
