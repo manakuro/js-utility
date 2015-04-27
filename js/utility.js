@@ -92,4 +92,26 @@
         return num.slice(-digit);
     };
 
+    /**
+     *  Returns a number rounded given decimal places
+     *
+     *  @method roundOff
+     *  @param int || float $num (The number to be rounded)
+     *  @param int $decimal (round place)
+     *  @return int || float $num (A Number)
+     */
+    ut.roundOff = function(num, decimal) {
+
+        var splited,
+        result,
+        degit;
+
+        if ( num === "" || typeof num === "undefined") return num;
+
+        decimal = decimal || 2;
+        degit = Math.pow(10, decimal);
+
+        return Math.round(num * degit) / degit;
+    };
+
 }.call(this));
