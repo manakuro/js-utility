@@ -114,4 +114,16 @@
         return Math.round(num * degit) / degit;
     };
 
+    /**
+     * Returns a escaped jQuery selector
+     *
+     * @method escapeJQuerySelector
+     * @param {String} $str (The String to be escaped)
+     * @return {String} $str
+     */
+    escapeJQuerySelector = function(str) {
+        if ( typeof str === "undefined" ) return str;
+        return val.replace(/[ !"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~]/g, '\\$&');
+    };
+
 }.call(this));
