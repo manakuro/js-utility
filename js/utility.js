@@ -12,10 +12,10 @@
      *  formatting date
      *
      *  @method formatDate 
-     *  @param  obj     $date   (instance of Date class)
-     *  @param  string  $format (formatting ex.)YYYY/MM/DD )
-     *  @param  obj     $_options {
-     *                      bool $weekday (add to weekday)
+     *  @param  {Obj}     $date   (instance of Date class)
+     *  @param  {String}  $format (formatting ex.)YYYY/MM/DD )
+     *  @param  {Obj}     $_options {
+     *                      {Bool} $weekday (add to weekday)
      *  }
      *  @return string $format (formated date) 
      */
@@ -48,9 +48,9 @@
      *  support multiple decimal patterns.
      *
      *  @method number
-     *  @param  int || float  $num      (number)
-     *  @param  boolean　　　  $decimal  ()
-　　　*  @return string        $num      (formatted number)     
+     *  @param  {Int} || {Float}  $num      (number)
+     *  @param  {Boolean}　　　    $decimal  ()
+　　　*  @return {String}          $num      (formatted number)     
      */
     ut.numberFormat = function(num, decimal){
         var splited = [];
@@ -77,9 +77,9 @@
      *  Returns pad digits with leading zeros in a string
      *
      *  @method zeroFill
-     *  @param  int 　　 $num   ()
-     *  @param  int 　　 $digit ()
-     *  @return string  $num　　()
+     *  @param  {Int} 　　 $num   ()
+     *  @param  {Int} 　　 $digit ()
+     *  @return {String}  $num　　()
      */
     ut.zeroFill = function(num, digit) {
         var i;
@@ -96,12 +96,11 @@
      *  Returns a number rounded given decimal places
      *
      *  @method roundOff
-     *  @param int || float $num (The number to be rounded)
-     *  @param int $decimal (round place)
-     *  @return int || float $num (A Number)
+     *  @param {Int} || {Float}     $num (The number to be rounded)
+     *  @param {Int}                $decimal (round place)
+     *  @return {Int} || {Float}    $num (A Number)
      */
     ut.roundOff = function(num, decimal) {
-
         var splited,
         result,
         degit;
