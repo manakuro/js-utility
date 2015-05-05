@@ -128,11 +128,11 @@
     /**
      *  Returns a formated time in (minutes : seconds)
      *
-     *  @method secToMin 
+     *  @method secToMini 
      *  @param  {Number} time (seconds)
      *  @return {String} minutes : seconds 
      */
-    ut.secToMin = function(time, delimitor) {
+    ut.secToMini = function(time, delimitor) {
         var minitues = Math.floor(Math.round(time) / 60),
             seconds = this.zeroFill(Math.floor(time - minitues * 60), 2);
         
