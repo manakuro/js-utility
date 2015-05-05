@@ -120,9 +120,24 @@
      * @param {String} $str (The String to be escaped)
      * @return {String} $str
      */
-    escapeJQuerySelector = function(str) {
+    ut.escapeJQuerySelector = function(str) {
         if ( typeof str === "undefined" ) return str;
-        return val.replace(/[ !"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~]/g, '\\$&');
+        return str.replace(/[ !"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~]/g, '\\$&');
+    };
+
+    /**
+     *  Returns a formated time in (minutes : seconds)
+     *
+     *  @method secToMin 
+     *  @param  {Number} time (seconds)
+     *  @return {String} minutes : seconds 
+     */
+    ut.secToMin = function(time, delimitor) {
+        var minitues = Math.floor(Math.round(time) / 60),
+            seconds = this.zeroFill(Math.floor(time - minitues * 60), 2);
+        
+        delimitor = delimitor || ":";
+        return minitues + delimitor + seconds;
     };
 
 }.call(this));
